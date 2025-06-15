@@ -1,0 +1,82 @@
+install Archlinux: 
+	wifi connect:
+- iwctl station wlan0 connect _ORBITA_
+
+run script tu install:
+- curl -fsSL christitus.com/linux | sh
+	System Setup
+	Arch linux
+	Arch server setup
+- reboot
+clear arch linux installed
+
+clear GRUB:
+- sudo rm -rf /boot/grub/themes
+- sudo nano /etc/default/grub
+	#GRUB_THEME="/boot/grub/themes/my_theme/theme.txt"
+- sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+## install yay:
+## run script tu install:
+	- curl -fsSL christitus.com/linux | sh
+
+## install pakeges:
+	sudo pacmna -S ly xorg xorg-xinit xorg-xauth micro mousepad bspwm sxhkd thunar alacritty nitrogen 
+	polybar picom rofi git lxappearance bibata-cursor-theme unzip xarchiver open-vm-tools
+
+## add autostart:
+	- micro .xinitrc
+		exec sxhkd &
+		exec bspwm
+
+## create bspwm folder and files:
+	- mkdir -p .config/bspwm
+	- mkdir -p .config/sxhkd
+	- cp /usr/share/doc/sxhkd/examples/sxhkdrc /home/w22/.config/sxhkd/
+	- micro .config/bspwm/bspwmrc
+		#! /bin/bash
+		sxhkd &
+	- chmod u+x .config/bspwm/bspwmrc
+	
+## alacritty:
+	- mkdir -p .config/alacritty
+	
+## install fonts:
+sudo pacman -S nerd-fonts-git 
+
+## add language:
+	- sudo nano /etc/X11/xorg.conf.d/00-keyboard.conf
+		Section "InputClass"
+			Identifier "system-keyboard"
+			MatchIsKeyboard "on"
+			Option "XkbLayout" "us,ua"
+			Option "XkbOptions" "grp:alt_shift_toggle"
+		EndSection
+
+## install auto-mount-usb:
+	- sudo pacman -S udisks2 gvfs gvfs-mtp gvfs-gphoto2 gvfs-afc polkit polkit-gnome
+
+
+instal GUEST vbox:
+- sudo pacman -S virtualbox-guest-utils
+- sudo systemctl enable --now vboxservice.service
+
+add to boot ly:
+- systemctl enable ly.service
+
+install menu:
+- sudo pacman -S menumaker unzip xarchiver
+
+
+install soft:
+- sudo yay -S google-chrome
+
+add language:
+- sudo nano /etc/X11/xorg.conf.d/00-keyboard.conf
+	Section "InputClass"
+		Identifier "system-keyboard"
+		MatchIsKeyboard "on"
+		Option "XkbLayout" "us,ua"
+		Option "XkbOptions" "grp:alt_shift_toggle"
+	EndSection
+- reboot

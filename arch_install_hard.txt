@@ -1,0 +1,168 @@
+
+install Archlinux: 
+	wifi connect:
+- iwctl station wlan0 connect _ORBITA_
+	
+	configure disk:
+- cfdisk /dev/sda
+
+	create:
+	550MB EFI System
+	4GB Linux swap
+	200GB Linux filesystem
+	write and quit
+	
+	format:
+- mkfs.fat -F32 /dev/sda1
+- mkswap /dev/sda2
+- swapon /dev/sda2
+- mkfs.ext4 /dev/sda3
+	
+	mount:
+- mount /dev/sda3 /mnt
+- mkdir /mnt/boot
+- mkdir /mnt/boot/efi
+- mount /dev/sda1 /mnt/boot/efi
+
+	install base:
+- nano /etc/pacman.conf
+	#ParallelDownloads = 5
+	ancomments and change 5 to 10
+
+- pacstrap -K /mnt base base-devel linux linux-firmware nano
+- genfstab -U /mnt >> /mnt/etc/fstab
+
+	CHROOT:
+- arch-chroot /mnt
+- ln -sf /usr/share/zoneinfo/RegionCity /etc/localtime
+- ln -sf /usr/share/zoneinfo/Europe/Kyiv /etc/localtime
+- hwclock --systohc
+- nano /etc/locale.gen
+	uncomment #en_US.UTF-8 UTF-8
+- locale-gen
+- nano /etc/locale.conf
+	LANG=en_US.UTF-8
+- echo w22 > /etc/hostname
+
+- nano /etc/hosts
+	127.0.0.1	localhost
+	::1	       localhost
+	127.0.0.1	w22.localdomain	w22
+	
+- pacman -S networkmanager
+- systemctl enable NetworkManager
+
+- passwd
+
+	BOOT:
+- pacman -S grub efibootmgr
+- grub-install --target=x86_64-efi --efi-directory=/boot/efi
+- grub-mkconfig -o /boot/grub/grub.cfg
+- exit
+- umount -R /mnt
+- reboot
+
+	CONNECT TO WIFI:
+- nmcli device wifi connect _ORBITA_ --ask
+
+	ADD SOUND:
+- sudo pacman -S pipewire pipewire-pulse wireplumber
+
+============================================================
+
+	Create user sudo:
+	
+- useradd -m w22
+- passwd w22
+- pacman -S sudo
+- nano /etc/sudoers
+	#add string:
+	w22 ALL=(ALL) All)
+
+
+============================================================
+
+	NANO syntax highlighting:
+- sudo pacman -S nano-syntax-highlighting
+- sudo nano /etc/nanorc
+	#uncomment: include /usr/share/nano/*.nanorc
+	#uncomment: set linenumber
+	#uncomment: set mouse
+
+============================================================
+
+
+install DWM:
+
+- sudo pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot firefox
+- cp /etc/X11/xinit/xinitrc .xinitrc
+- nano .xinitrc
+	remove:
+		all
+	paste:
+		exec dwm
+
+- git clone https://git.suckless.org/dwm
+
+- git clone https://git.suckless.org/st
+
+- cd st
+
+- sudo make clean install
+
+- cd ../dwm
+
+- sudo make clean install
+
+- sudo nano config.h
+	change "/bin/sh" to "/usr/local/bin/st"
+	
+- nano .bash_profile
+startx
+
+ INSTALL SOFT:
+ dmenu alacritty git yazi font-manager mupdf ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
+ 
+ ============================================================
+ 
+	Атоматичне монтування USB
+- sudo pacman -S udisks2 udiskie
+- nano .xinitrc
+	#add:
+		udiskie &
+- sudo usermod -aG storage $USER
+- sudo pacman -S udev
+ 
+ ============================================================
+ 
+	Install wallpaper:
+- sudo pacman -S feh picom
+- feh --bg-fill Pictures/walpaper.png
+- git clone https://git.suckless.org/slstatus
+- cd slstatus
+- sudo make clean install
+- nano .xinitrc
+	#add in first line:
+		~/.fehbd &
+		picom &
+		slstatus&
+
+ ============================================================
+ 
+	Install visual studio code:
+- git clone https://aur.archlinux.org/yay.git
+- cd yay
+- makepkg -si
+- yay -S visual-studio-code-bin
+ 
+ ============================================================
+ 
+	Default open programm:
+	Перевірте поточний додаток за замовчуванням для PDF:
+- xdg-mime query default application/pdf
+	Якщо вивід показує браузер (firefox.desktop, chrome.desktop тощо), змініть його:
+- xdg-mime default mupdf.desktop application/pdf
+
+ ============================================================
+ 
+ 

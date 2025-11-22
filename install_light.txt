@@ -36,7 +36,7 @@ run script tu install:
 sudo pacman -S nerd-fonts-git 
 
 ## add language:
-	- sudo nano /etc/X11/xorg.conf.d/00-keyboard.conf
+	- sudo micro /etc/X11/xorg.conf.d/00-keyboard.conf
 		Section "InputClass"
 			Identifier "system-keyboard"
 			MatchIsKeyboard "on"
@@ -71,5 +71,6 @@ add language:
 		Option "XkbOptions" "grp:alt_shift_toggle"
 	EndSection
 - reboot
+
 
 

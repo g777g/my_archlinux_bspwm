@@ -24,3 +24,4 @@ killall -q polybar
 
 # Launch bar
 polybar mainbar &
+picom &

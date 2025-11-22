@@ -1,0 +1,63 @@
+#open brouser
+super + w
+	google-chrome-stable
+
+#open terminal
+super + Return
+	alacritty
+
+#open file manager
+super + f
+	thunar
+
+#open menu
+super + d
+	dmenu_run
+
+#close window
+super + c
+	bspc node -c
+
+#printscrin
+super + 0
+	scrot ~/Pictures/%Y-%m-%d_%H:%M:%S.png
+
+#reboot system
+super + shift + r
+	reboot
+
+#poweroff system
+super + shift + p
+	poweroff
+
+super + {shift + t,shift + f}
+	bspc node -t {tiled,fullscreen}
+
+#restart sxhkd
+super + Escape
+	pkill -USR1 -x sxhkd
+
+#restart bspwm
+super + ctrl +Escape
+	bspc {quit,wm -r}
+
+#increace ligt
+super + alt + 6
+	brightnessctl +3%
+
+#decreace light
+super + alt + 5
+	brightnessctl 3%-
+
+#increace volume
+super + f12
+	amixer set Master +3%
+
+#decreace volume
+super + f11
+	amixer set Master 3%-
+
+#change desktop number or move active window to desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f, node -d} ^{1-9,10}
+	

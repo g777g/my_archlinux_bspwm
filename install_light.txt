@@ -18,20 +18,17 @@ run script tu install:
 	polybar git lxappearance bibata-cursor-theme unzip xarchiver 
 
 ## add autostart:
-	- micro .xinitrc
-		#! /bin/sh
-		exec sxhkd &
-		exec bspwm
+	cp .xinitrc /home/w22
+	chmod +x .xinitrc
 
 ## create bspwm folder and files:
 	- mkdir -p .config/bspwm
 	- mkdir -p .config/sxhkd
-	- cp /usr/share/doc/sxhkd/examples/sxhkdrc /home/w22/.config/sxhkd/
-	- micro .config/bspwm/bspwmrc
-		#! /bin/bash
-		sxhkd &
-	- chmod u+x .config/bspwm/bspwmrc
-	
+	- cp /home/w22/.config/sxhkd/sxhkdrc
+	- cp /home/w22/.config/bspwm/bspwmrc
+	- chmod +x /home/w22/.config/sxhkd/sxhkdrc
+	- chmod +x /home/w22/.config/bspwm/bspwmrc
+
 ## alacritty:
 	- mkdir -p .config/alacritty
 	
@@ -74,4 +71,5 @@ add language:
 		Option "XkbOptions" "grp:alt_shift_toggle"
 	EndSection
 - reboot
+
 

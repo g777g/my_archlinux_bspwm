@@ -60,28 +60,23 @@ run script tu install:
 	- sudo pacman -S udisks2 gvfs gvfs-mtp gvfs-gphoto2 gvfs-afc polkit polkit-gnome
 
 
-instal GUEST vbox:
-- sudo pacman -S virtualbox-guest-utils
-- sudo systemctl enable --now vboxservice.service
+## instal GUEST vbox:
+	- sudo pacman -S virtualbox-guest-utils
+	- sudo systemctl enable --now vboxservice.service
 
-add to boot ly:
-- systemctl enable ly.service
-
-
-install soft:
-- sudo yay -S google-chrome
+## add to boot ly:
+	- systemctl enable ly.service
 
 
+## install soft:
+	- sudo yay -S google-chrome
 
-
-
-
-
-
-
-
-
-
+## install themes thunar Nordic
+	- mkdir -p ~/.themes
+	- cp Nordic-master ~/.themes
+	- micro .config/gtk-3.0/settings.ini
+		[Settings]
+		gtk-theme-name=Nordic-master
 
 
 

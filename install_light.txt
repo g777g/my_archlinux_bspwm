@@ -8,24 +8,18 @@ run script tu install:
 	Arch linux
 	Arch server setup
 - reboot
-clear arch linux installed
-
-clear GRUB:
-- sudo rm -rf /boot/grub/themes
-- sudo nano /etc/default/grub
-	#GRUB_THEME="/boot/grub/themes/my_theme/theme.txt"
-- sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ## install yay:
 ## run script tu install:
 	- curl -fsSL christitus.com/linux | sh
 
 ## install pakeges:
-	sudo pacmna -S ly xorg xorg-xinit xorg-xauth micro mousepad bspwm sxhkd thunar alacritty nitrogen 
-	polybar picom rofi git lxappearance bibata-cursor-theme unzip xarchiver open-vm-tools
+	sudo pacmna -S ly xorg xorg-xinit micro mousepad bspwm sxhkd thunar alacritty 
+	polybar git lxappearance bibata-cursor-theme unzip xarchiver 
 
 ## add autostart:
 	- micro .xinitrc
+		#! /bin/sh
 		exec sxhkd &
 		exec bspwm
 
@@ -80,3 +74,4 @@ add language:
 		Option "XkbOptions" "grp:alt_shift_toggle"
 	EndSection
 - reboot
+

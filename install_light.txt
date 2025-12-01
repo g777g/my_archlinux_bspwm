@@ -42,10 +42,6 @@ run script tu install:
 		SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0660", GROUP="video"
 	- sudo usermod -aG video w22
 
-## install fonts:
-	- yay -S nerd-fonts-git
-	- yay -S light
-	- fc-cache -fv
 
 ## install picom
 	- sudo pacman -S pikom
@@ -73,7 +69,7 @@ run script tu install:
 	- systemctl enable ly.service
 
 ## install soft:
-	- sudo yay -S google-chrome
+	- yay -S google-chrome
 
 ## install themes thunar Nordic
 	- mkdir -p ~/.themes
@@ -81,4 +77,5 @@ run script tu install:
 	- micro .config/gtk-3.0/settings.ini
 		[Settings]
 		gtk-theme-name=Nordic-master
+
 

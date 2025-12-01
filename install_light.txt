@@ -73,10 +73,11 @@ run script tu install:
 
 ## install themes thunar Nordic
 	- mkdir -p ~/.themes
-	- cp Nordic-master ~/.themes
+	- cp -rf Nordic-master ~/.themes
 	- micro .config/gtk-3.0/settings.ini
 		[Settings]
 		gtk-theme-name=Nordic-master
+
 
 
 

@@ -14,7 +14,7 @@ run script tu install:
 	- curl -fsSL christitus.com/linux | sh
 
 ## install pakeges:
-	sudo pacmna -S ly xorg xorg-xinit micro mousepad bspwm sxhkd thunar alacritty 
+	sudo pacmna -S ly xorg xorg-xinit micro mousepad bspwm sxhkd thunar thunar-archive-plugin alacritty 
 	git
 
 ## add autostart:
@@ -77,5 +77,6 @@ run script tu install:
 	- micro .config/gtk-3.0/settings.ini
 		[Settings]
 		gtk-theme-name=Nordic-master
+
 
 

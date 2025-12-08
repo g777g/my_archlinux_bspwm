@@ -47,6 +47,7 @@ run script tu install:
 	- sudo pacman -S pikom
 	- mkdir -p ~/.config/picom/
 	- cp ~/.config/picom/picom.conf
+	in micro tipe: ctrl + e set colorschemes catppuccin-frappe
 
 ## add language:
 	- sudo micro /etc/X11/xorg.conf.d/00-keyboard.conf
@@ -81,6 +82,7 @@ run script tu install:
 	- micro .config/gtk-3.0/settings.ini
 		[Settings]
 		gtk-theme-name=Nordic-master
+
 
 
 

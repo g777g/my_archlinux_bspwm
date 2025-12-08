@@ -68,6 +68,10 @@ run script tu install:
 ## add to boot ly:
 	- systemctl enable ly.service
 
+## install theme micro
+	- cp catppuccin-frappe.micro ~/.config/micro/colorschemes
+	- cp settings.json ~/.config/micro
+
 ## install soft:
 	- yay -S google-chrome
 
@@ -77,6 +81,7 @@ run script tu install:
 	- micro .config/gtk-3.0/settings.ini
 		[Settings]
 		gtk-theme-name=Nordic-master
+
 
 
 

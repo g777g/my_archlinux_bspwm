@@ -13,6 +13,9 @@ super + f
 #open menu
 super + d
 	dmenu_run
+#open vscode
+super + n
+	code
 
 #close window
 super + c

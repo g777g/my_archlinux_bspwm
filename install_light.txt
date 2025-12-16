@@ -47,7 +47,7 @@
 
 
 ## install picom
-	- sudo pacman -S pikom
+	- sudo pacman -S picom
 	- mkdir -p ~/.config/picom/
 	- cp ~/.config/picom/picom.conf
 	in micro tipe: ctrl + e set colorschemes catppuccin-frappe
@@ -85,6 +85,7 @@
 	- micro .config/gtk-3.0/settings.ini
 		[Settings]
 		gtk-theme-name=Nordic-master
+
 
 
 

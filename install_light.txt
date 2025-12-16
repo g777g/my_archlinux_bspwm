@@ -73,6 +73,7 @@
 	- sudo systemctl enable ly@tty2.service
 
 ## install theme micro
+	- mkdir -p ~/.config/micro/colorschemes
 	- cp catppuccin-frappe.micro ~/.config/micro/colorschemes
 	- cp settings.json ~/.config/micro
 
@@ -85,6 +86,7 @@
 	- micro .config/gtk-3.0/settings.ini
 		[Settings]
 		gtk-theme-name=Nordic-master
+
 
 
 

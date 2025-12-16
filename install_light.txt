@@ -42,8 +42,11 @@
 
 	## щоб робила підсвітка
 	- micro /etc/udev/rules.d/90-brightness.rules
-		SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0660", GROUP="video"
+		ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness", RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"
 	- sudo usermod -aG video w22
+	- sudo udevadm control --reload-rules && sudo udevadm trigger
+	- micro /etc/default/grub
+	Додайте до рядка GRUB_CMDLINE_LINUX_DEFAULT параметр: i915.enable_dpcd_backlight=1
 
 
 ## install picom
@@ -86,6 +89,7 @@
 	- micro .config/gtk-3.0/settings.ini
 		[Settings]
 		gtk-theme-name=Nordic-master
+
 
 
 

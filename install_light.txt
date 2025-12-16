@@ -1,16 +1,16 @@
-install Archlinux: 
+## install Archlinux: 
 	wifi connect:
 - iwctl station wlan0 connect _ORBITA_
 
-connect wifi in clear ARCHLINUX:
-- nmcli device wifi connect _ORBITA_ password "Ваш_пароль"
-
-run script tu install:
+## run script tu install:
 - curl -fsSL christitus.com/linux | sh
 	System Setup
 	Arch linux
 	Arch server setup
 - reboot
+
+## connect wifi in clear ARCHLINUX:
+- nmcli device wifi connect _ORBITA_ password "Ваш_пароль"
 
 ## install yay:
 ## run script tu install:
@@ -85,6 +85,7 @@ run script tu install:
 	- micro .config/gtk-3.0/settings.ini
 		[Settings]
 		gtk-theme-name=Nordic-master
+
 
 
 

@@ -21,9 +21,17 @@ super + n
 super + c
 	bspc node -c
 
-#printscrin
-super + 0
-	scrot ~/Pictures/%Y-%m-%d_%H:%M:%S.png
+# Весь экран (PrintScreen)
+Print
+    scrot '%Y-%m-%d-%H%M%S_screenshot.png' -e 'mv $f ~/Pictures/Screenshots/ ; xclip -selection clipboard -t image/png -i ~/Pictures/Screenshots/$f'
+
+# Выбор области мышкой (Alt + PrintScreen)
+alt + Print
+    scrot -s '%Y-%m-%d-%H%M%S_area.png' -e 'mv $f ~/Pictures/Screenshots/ ; xclip -selection clipboard -t image/png -i ~/Pictures/Screenshots/$f'
+
+# Активное окно (Control + PrintScreen)
+ctrl + Print
+    scrot -u '%Y-%m-%d-%H%M%S_window.png' -e 'mv $f ~/Pictures/Screenshots/ ; xclip -selection clipboard -t image/png -i ~/Pictures/Screenshots/$f'
 
 #reboot system
 super + shift + r
@@ -36,6 +44,30 @@ super + shift + p
 super + {shift + t,shift + f}
 	bspc node -t {tiled,fullscreen}
 
+# Збільшити яскравість підсвітки клавіатури
+XF86KbdBrightnessUp
+    brightnessctl --device='asus::kbd_backlight' set 1+
+
+# Зменшити яскравість підсвітки клавіатури
+XF86KbdBrightnessDown
+    brightnessctl --device='asus::kbd_backlight' set 1-
+
+# Збільшити гучність (на 5%)
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+# Зменшити гучність (на 5%)
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+# Увімкнути/вимкнути звук (Mute)
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Увімкнути/вимкнути мікрофон
+XF86AudioMicMute
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
 #restart sxhkd
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -44,21 +76,13 @@ super + Escape
 super + ctrl +Escape
 	bspc {quit,wm -r}
 
-#increace ligt
-super + alt + 6
-	brightnessctl +3%
+# Збільшити яскравість екрана
+XF86MonBrightnessUp
+    brightnessctl set +10%
 
-#decreace light
-super + alt + 5
-	brightnessctl 3%-
-
-#increace volume
-super + f12
-	amixer set Master +3%
-
-#decreace volume
-super + f11
-	amixer set Master 3%-
+# Зменшити яскравість екрана
+XF86MonBrightnessDown
+    brightnessctl set 10%-
 
 #change desktop number or move active window to desktop
 super + {_,shift + }{1-9,0}

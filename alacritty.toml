@@ -2,7 +2,7 @@
 primary = { background = "0x2E3440", foreground = "0xD8DEE9" }
 cursor = { text = "0x2E3440", cursor = "0xD8DEE9" }
 vi_mode_cursor = { text = "0x2E3440", cursor = "0x88C0D0" }
-selection = { text = "0x2E3440", background = "0x4C566A" }
+selection = { text = "0x2E3440", background = "0xFFB6C1" }
 indexed_colors = []
 
 [colors.normal]
